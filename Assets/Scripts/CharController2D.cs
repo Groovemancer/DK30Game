@@ -12,9 +12,9 @@ public class CharController2D : MonoBehaviour {
     private Rigidbody2D body;
     private Vector3 velocity = Vector3.zero;
     private bool grounded = true;
-    private const float groundedRadius = 0.2f;
+    private Vector2 footBoxDimensions = new Vector2(0.1f, 1f);
 
-    public UnityEvent OnLandEvent;
+	public UnityEvent OnLandEvent;
 
     private void Awake() {
         body = GetComponent<Rigidbody2D>();
@@ -26,7 +26,7 @@ public class CharController2D : MonoBehaviour {
     private void FixedUpdate() {
         bool wasGrounded = grounded;
         grounded = false;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCollider.position, groundedRadius, groundLayer);
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(groundCollider.position, footBoxDimensions, groundLayer);
         foreach(Collider2D collider in colliders) {
             if (collider.gameObject != gameObject) {
                 grounded = true;
