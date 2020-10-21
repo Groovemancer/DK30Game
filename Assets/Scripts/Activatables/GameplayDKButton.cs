@@ -19,24 +19,22 @@ public class GameplayDKButton : BaseActivatable
 	//update is only called when the player is in range
 	void Update()
 	{
-		if(isActive == false)
+		//print(Time.time - LastActivated);
+		if (isActive == false && Time.time - LastActivated > DoubleTapPreventionDelay && Input.GetButtonDown("Activate"))
 		{
-			//print(Time.time - LastActivated);
-			if (Time.time - LastActivated > DoubleTapPreventionDelay && Input.GetButtonDown("Activate"))
-			{
-				LastActivated = Time.time;
-				isActive = true;
-				InvokeOnActive();
-			}
+			LastActivated = Time.time;
+			StartCoroutine( PressButton() );
 		}
-		else
-		{
-			if(Time.time - LastActivated > delayToDeActivate)
-			{
-				isActive = false;
-				InvokeOnDeActive();
-			}
-		}
+		
+	}
+
+	IEnumerator PressButton()
+	{
+		isActive = true;
+		InvokeOnActive();
+		yield return new WaitForSeconds(delayToDeActivate);
+		isActive = false;
+		InvokeOnDeActive();
 	}
 
 }
