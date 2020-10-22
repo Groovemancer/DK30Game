@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3191999395251043740}
   - component: {fileID: 1549933955546628718}
   m_Layer: 31
-  m_Name: New Palette
+  m_Name: WaterFall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154895994986872344}
   m_Enabled: 1
-  m_CellSize: {x: 1.032258, y: 1.032258, z: 0}
+  m_CellSize: {x: 1, y: 1, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
