@@ -6,6 +6,7 @@ public class PlayerCharacter : MonoBehaviour
 {
 	public PlayerMovment playerMovement;
 
+	
 	public void EnableControl()
 	{
 		playerMovement.enabled = true;
