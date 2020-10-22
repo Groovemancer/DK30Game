@@ -25,7 +25,6 @@ public class GameplayDKButton : BaseActivatable
 			LastActivated = Time.time;
 			StartCoroutine( PressButton() );
 		}
-		
 	}
 
 	IEnumerator PressButton()
