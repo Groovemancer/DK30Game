@@ -30,13 +30,19 @@ public abstract class BaseActivatable : MonoBehaviour
 
 	protected void InvokeOnActive()
 	{
-		spriteRenderer.sprite = SpriteDeActiveState;
+		if(SpriteDeActiveState != null)
+		{
+			spriteRenderer.sprite = SpriteDeActiveState;
+		}
 		OnActiveEvents.Invoke();
 	}
 
 	protected void InvokeOnDeActive()
 	{
-		spriteRenderer.sprite = SpriteActiveState;
+		if (SpriteActiveState != null)
+		{
+			spriteRenderer.sprite = SpriteActiveState;
+		}
 		OnDeActiveEvents.Invoke();
 	}
 
