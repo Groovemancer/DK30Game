@@ -11,24 +11,38 @@ using UnityEngine.Events;
  *  
  *  **update is only called when the player is in range
  */
-
+[RequireComponent(typeof(SpriteRenderer))]
 public abstract class BaseActivatable : MonoBehaviour
 {
 	public UnityEvent OnActiveEvents;
 	public UnityEvent OnDeActiveEvents;
 
-	protected float DoubleTapPreventionDelay = .5f;
-	protected float LastActivated = 0;
+	public Sprite SpriteActiveState;
+	public Sprite SpriteDeActiveState;
 
 	
+	protected SpriteRenderer spriteRenderer;
+
+
+	protected float DoubleTapPreventionDelay = .5f;
+	protected float LastActivated = 0;
+	protected bool isActive = false;
+
 	protected void InvokeOnActive()
 	{
+		spriteRenderer.sprite = SpriteDeActiveState;
 		OnActiveEvents.Invoke();
 	}
 
 	protected void InvokeOnDeActive()
 	{
+		spriteRenderer.sprite = SpriteActiveState;
 		OnDeActiveEvents.Invoke();
+	}
+
+	private void Awake()
+	{
+		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
 	private void Start()
