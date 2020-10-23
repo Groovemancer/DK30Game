@@ -72,9 +72,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -3125634477355261619, guid: 92b180080f498a647b35bd7d4b15d234,
+  m_Sprite: {fileID: 7851105499405972722, guid: e5c9c2696f236f84fa696a8bd709b1cd,
     type: 3}
-  m_Color: {r: 0, g: 0.04080534, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,7 +97,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.011836767, y: -0.033931673}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -108,7 +108,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.6512141, y: 0.87532103}
   m_EdgeRadius: 0
 --- !u!114 &5305049144854717218
 MonoBehaviour:
@@ -128,8 +128,8 @@ MonoBehaviour:
   OnDeActiveEvents:
     m_PersistentCalls:
       m_Calls: []
-  SpriteActiveState: {fileID: -3125634477355261619, guid: 92b180080f498a647b35bd7d4b15d234,
+  SpriteActiveState: {fileID: 7851105499405972722, guid: e5c9c2696f236f84fa696a8bd709b1cd,
     type: 3}
-  SpriteDeActiveState: {fileID: 8504733163015029092, guid: 92b180080f498a647b35bd7d4b15d234,
+  SpriteDeActiveState: {fileID: 6372968664638053925, guid: e5c9c2696f236f84fa696a8bd709b1cd,
     type: 3}
   delayToDeActivate: 1
