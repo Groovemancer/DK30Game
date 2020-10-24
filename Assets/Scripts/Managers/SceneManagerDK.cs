@@ -5,22 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagerDK : MonoBehaviour
 {
-	public string TargetSceneName;
+	public string NextSceneName;
 	/*
 	 * True - saves the scene you are transitioning too the player prefs to be able to continue 
 	 * 
 	 * False - does not save
 	 */
-	public bool DoSaveSceneToContinue = false;
+	public bool SaveNextSceneToPlayerPrefs = false;
 
-	public void LoadTargetScene()
+	public void LoadNextScene()
 	{
-		if(DoSaveSceneToContinue == true)
+		if(SaveNextSceneToPlayerPrefs == true)
 		{
-			PlayerPrefs.SetString("ContinueLevel", TargetSceneName);
+			PlayerPrefs.SetString("ContinueLevel", NextSceneName);
 		}
 
-		SceneManager.LoadScene(TargetSceneName);
+		SceneManager.LoadScene(NextSceneName);
 	}
 
 	public void LoadContinueLevelScene()

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -384,8 +384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f7917ad2c9d8344b63f6d6c363ca4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetSceneName: TestScene2
-  DoSaveSceneToContinue: 1
+  NextSceneName: TestScene2
+  SaveNextSceneToPlayerPrefs: 1
 --- !u!1 &1512927703
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +512,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1299470141}
-        m_MethodName: LoadTargetScene
+        m_MethodName: LoadNextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -525,6 +525,8 @@ MonoBehaviour:
   OnDeActiveEvents:
     m_PersistentCalls:
       m_Calls: []
+  SpriteActiveState: {fileID: 0}
+  SpriteDeActiveState: {fileID: 0}
   delayToDeActivate: 5
 --- !u!1 &1801062177
 GameObject:
@@ -569,6 +571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ae890bfb499994393922ef319f64c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WhatSpawnsOnStart: 0
   OnePrefab: {fileID: 2653129635004450201, guid: 8a1de4f92478e144ba3417a5d3affe59,
     type: 3}
   TwoPrefab: {fileID: 2653129635004450201, guid: 8a1de4f92478e144ba3417a5d3affe59,

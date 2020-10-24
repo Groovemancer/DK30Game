@@ -6,15 +6,24 @@ using UnityEngine;
  *	The Player Charater Manager is in charge of the two player characters 
  * 
  */
+public enum PlayerSpawnRule { BOTH, ONE_ONLY, TWO_ONLY, NONE };
+
 
 public class PlayerCharatersManager : MonoBehaviour
 {
+
+
+
 	[Header("Character Prefabs")]
+	public PlayerSpawnRule WhatSpawnsOnStart;
 	public GameObject OnePrefab;
 	public GameObject TwoPrefab;
 
 	private GameObject One;
 	private GameObject Two;
+
+	private bool IsOneSpawned = false;
+	private bool IsTwoSpawned = false;
 
 	[Header("Scene Locations")]
 	public GameObject PlayerOneSpawnLocation;
@@ -24,13 +33,12 @@ public class PlayerCharatersManager : MonoBehaviour
 	//public GameObject PlayerOneSpawnLocation;
 	//public GameObject PlayerTwoSpawnLocation;
 
-	[Header("PlayerManager Variables")]
 	private int CurrentControllingCharater = -1;
 	private List<PlayerCharacter> PlayerControlledObjects = new List<PlayerCharacter>();
 
 	public void Start()
 	{
-		SpawnPlayers();
+		InitialSpawnPlayers();
 	}
 
 	void Update()
@@ -41,20 +49,18 @@ public class PlayerCharatersManager : MonoBehaviour
 		}
 	}
 
-	public void SpawnPlayers()
+	public void InitialSpawnPlayers()
 	{
 		//one spawn
-		if(OnePrefab != null)
+		if (OnePrefab != null && (WhatSpawnsOnStart == PlayerSpawnRule.BOTH || WhatSpawnsOnStart == PlayerSpawnRule.ONE_ONLY) )
 		{
-			One = Instantiate(OnePrefab, PlayerOneSpawnLocation.transform.position, PlayerOneSpawnLocation.transform.rotation);
-			PlayerControlledObjects.Add(One.GetComponent<PlayerCharacter>());
+			SpawnPlayerOne();
 		}
 
 		//two spawn
-		if(TwoPrefab != null)
+		if(TwoPrefab != null && (WhatSpawnsOnStart == PlayerSpawnRule.BOTH || WhatSpawnsOnStart == PlayerSpawnRule.TWO_ONLY))
 		{
-			Two = Instantiate(TwoPrefab, PlayerTwoSpawnLocation.transform.position, PlayerTwoSpawnLocation.transform.rotation);
-			PlayerControlledObjects.Add(Two.GetComponent<PlayerCharacter>());
+			SpawnPlayerTwo();
 		}
 
 		if (CurrentControllingCharater == -1 && PlayerControlledObjects.Count != 0)
@@ -116,4 +122,25 @@ public class PlayerCharatersManager : MonoBehaviour
 			PlayerControlledObjects.Remove(toRemove);
 		}
 	}
+
+	public void SpawnPlayerOne()
+	{
+		if(IsOneSpawned == false)
+		{
+			One = Instantiate(OnePrefab, PlayerOneSpawnLocation.transform.position, PlayerOneSpawnLocation.transform.rotation);
+			PlayerControlledObjects.Add(One.GetComponent<PlayerCharacter>());
+			IsOneSpawned = true;
+		}
+	}
+
+	public void SpawnPlayerTwo()
+	{
+		if (IsTwoSpawned == false)
+		{
+			Two = Instantiate(TwoPrefab, PlayerTwoSpawnLocation.transform.position, PlayerTwoSpawnLocation.transform.rotation);
+			PlayerControlledObjects.Add(Two.GetComponent<PlayerCharacter>());
+			IsTwoSpawned = true;
+		}
+	}
+
 }

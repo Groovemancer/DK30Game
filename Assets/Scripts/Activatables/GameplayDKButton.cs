@@ -5,8 +5,6 @@ using UnityEngine;
 public class GameplayDKButton : BaseActivatable
 {
 	public int delayToDeActivate;
-	private bool isActive = false;
-
 
 	/* If the button is not active at the moment
 	 * Waits for player to press the interactive button 
