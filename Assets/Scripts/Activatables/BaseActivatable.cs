@@ -23,7 +23,6 @@ public abstract class BaseActivatable : MonoBehaviour
 	
 	protected SpriteRenderer spriteRenderer;
 
-
 	protected float DoubleTapPreventionDelay = .5f;
 	protected float LastActivated = 0;
 	protected bool isActive = false;
