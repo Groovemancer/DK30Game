@@ -7,12 +7,20 @@ public class ZoneTrigger : BaseActivatable
 	
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		InvokeOnActive();
+		if (  CanOnlyActivateOnce == false || (CanOnlyActivateOnce == true && DidActivateOnce == false))
+		{
+			DidActivateOnce = true;
+			InvokeOnActive();
+		}
 	}
 
 	//when the player leaves
 	private void OnTriggerExit2D(Collider2D collision)
 	{
-		InvokeOnDeActive();
+		if (CanOnlyActivateOnce == false || (CanOnlyActivateOnce == true && DidDeActivateOnce == false))
+		{
+			DidDeActivateOnce = true;
+			InvokeOnDeActive();
+		}
 	}
 }

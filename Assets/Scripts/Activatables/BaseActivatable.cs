@@ -17,10 +17,13 @@ public abstract class BaseActivatable : MonoBehaviour
 	public UnityEvent OnActiveEvents;
 	public UnityEvent OnDeActiveEvents;
 
+	public bool CanOnlyActivateOnce = false;
+	protected bool DidActivateOnce = false;
+	protected bool DidDeActivateOnce = false;
+
 	public Sprite SpriteActiveState;
 	public Sprite SpriteDeActiveState;
 
-	
 	protected SpriteRenderer spriteRenderer;
 
 	protected float DoubleTapPreventionDelay = .5f;

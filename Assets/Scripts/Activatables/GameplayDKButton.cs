@@ -30,7 +30,10 @@ public class GameplayDKButton : BaseActivatable
 		isActive = true;
 		InvokeOnActive();
 		yield return new WaitForSeconds(delayToDeActivate);
-		isActive = false;
+		if (CanOnlyActivateOnce == false)
+		{
+			isActive = false;
+		}
 		InvokeOnDeActive();
 	}
 
