@@ -5,8 +5,14 @@ using UnityEngine;
 public class ZoneTrigger : BaseActivatable
 {
 	
-	private void OnTriggerEnter2D(Collider2D collision)
+	void OnTriggerEnter2D(Collider2D collision)
 	{
+		//base on trigger enter
+
+		ObjectsInRange.Add(collision.gameObject);
+
+		//end base on trigger enter
+
 		if (  CanOnlyActivateOnce == false || (CanOnlyActivateOnce == true && DidActivateOnce == false))
 		{
 			DidActivateOnce = true;
@@ -15,8 +21,16 @@ public class ZoneTrigger : BaseActivatable
 	}
 
 	//when the player leaves
-	private void OnTriggerExit2D(Collider2D collision)
+	void OnTriggerExit2D(Collider2D collision)
 	{
+		//base on trigger exit
+		if (ObjectsInRange.Contains(collision.gameObject))
+		{
+			ObjectsInRange.Remove(collision.gameObject);
+		}
+		//end base on trigger exit
+
+
 		if (CanOnlyActivateOnce == false || (CanOnlyActivateOnce == true && DidDeActivateOnce == false))
 		{
 			DidDeActivateOnce = true;

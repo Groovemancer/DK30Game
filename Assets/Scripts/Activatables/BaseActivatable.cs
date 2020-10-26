@@ -14,6 +14,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(SpriteRenderer))]
 public abstract class BaseActivatable : MonoBehaviour
 {
+	public List<GameObject> ObjectsInRange = new List<GameObject>();
+
 	public UnityEvent OnActiveEvents;
 	public UnityEvent OnDeActiveEvents;
 
@@ -23,6 +25,8 @@ public abstract class BaseActivatable : MonoBehaviour
 
 	public Sprite SpriteActiveState;
 	public Sprite SpriteDeActiveState;
+
+	public UnityEventTargetPasserHelper TargetPasser;
 
 	protected SpriteRenderer spriteRenderer;
 
@@ -58,17 +62,27 @@ public abstract class BaseActivatable : MonoBehaviour
 		this.enabled = false;
 	}
 
-	private void OnTriggerEnter2D(Collider2D collision)
+	void OnTriggerEnter2D(Collider2D collision)
 	{
-		//print("Player is in range");
+		ObjectsInRange.Add(collision.gameObject);
 		this.enabled = true;
 	}
 
 	//when the player leaves
-	private void OnTriggerExit2D(Collider2D collision)
+	void OnTriggerExit2D(Collider2D collision)
 	{
-		//print("Player left");
+		if ( ObjectsInRange.Contains(collision.gameObject) )
+		{
+			ObjectsInRange.Remove(collision.gameObject);
+		}
 		this.enabled = false;
 	}
 
+	public void SetTargetPasser()
+	{
+		if(ObjectsInRange.Count > 0 && TargetPasser != null)
+		{
+			TargetPasser.SetTarget(ObjectsInRange[0]);
+		}
+	}
 }
