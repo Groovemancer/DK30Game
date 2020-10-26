@@ -41,6 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Enviroment
-    uniqueID: 2427040693
+
+
+  - name: Wall Hangings
+    uniqueID: 4069474303
+    locked: 0
+  - name: Floor Objects
+    uniqueID: 3626358253
+    
     locked: 0
