@@ -20,38 +20,54 @@ public class PlayerMovment : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    void Update() {
+    void Update()
+    {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-        
-        
-        if (IsGrounded() && Input.GetButtonDown("Jump")) {
+
+        if (IsGrounded())
+        {
+            if (animator.GetBool("Jumping") == true)
+            {
+                animator.SetBool("Jumping", false);
+            }
+        }
+
+        if (IsGrounded() && Input.GetButtonDown("Jump"))
+        {
+            animator.SetBool("Jumping", true);
             jump = true;
         }
     }
 
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
         controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
         
         //check to see which way the character is moving
-        if (Input.GetAxis("Horizontal") > 0 && !m_FacingRight)
+        if (horizontalMove > 0 && !m_FacingRight)
         {
             Flip();
         }
-        else if (Input.GetAxis("Horizontal") < 0 && m_FacingRight)
+        else if (horizontalMove < 0 && m_FacingRight)
         {
             Flip();
         }
 
-        animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
+        animator.SetBool("Running", Mathf.Abs(horizontalMove) > 0);
+        //animator.SetFloat("Horizontal", Mathf.Abs(horizontalMove));
         //Debug.Log(Input.GetAxis("Horizontal"));
         jump = false;
+        
     }
 
     private bool IsGrounded() {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, environmentLayerMask);
-        if (raycastHit.collider != null) {
+        if (raycastHit.collider != null)
+        {
             return true;
-        } else {
+        }
+        else
+        {
             return false;
         }
     }
