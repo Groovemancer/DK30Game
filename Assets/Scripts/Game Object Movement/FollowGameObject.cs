@@ -9,7 +9,8 @@ public class FollowGameObject : MonoBehaviour
 	public float Speed;
 	public GameObject Target;
 	public float StopDistance;
-	public UnityEvent OnActiveEvents;
+
+	public UnityEvent OnStopEvents;
 
 	private bool IsStopped = true;
 
@@ -28,7 +29,7 @@ public class FollowGameObject : MonoBehaviour
 				if (IsStopped == false)
 				{
 					IsStopped = true;
-					OnActiveEvents.Invoke();
+					OnStopEvents.Invoke();
 				}
 			}
 		}
