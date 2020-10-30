@@ -65,6 +65,7 @@ public abstract class BaseActivatable : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D collision)
 	{
 		ObjectsInRange.Add(collision.gameObject);
+		SetTargetPasser();
 		this.enabled = true;
 	}
 
@@ -74,6 +75,7 @@ public abstract class BaseActivatable : MonoBehaviour
 		if ( ObjectsInRange.Contains(collision.gameObject) )
 		{
 			ObjectsInRange.Remove(collision.gameObject);
+			UnSetTargetPasser();
 		}
 		this.enabled = false;
 	}
@@ -85,4 +87,13 @@ public abstract class BaseActivatable : MonoBehaviour
 			TargetPasser.SetTarget(ObjectsInRange[0]);
 		}
 	}
+
+	public void UnSetTargetPasser()
+	{
+		if (TargetPasser != null)
+		{
+			TargetPasser.UnSetTarget();
+		}
+	}
+
 }

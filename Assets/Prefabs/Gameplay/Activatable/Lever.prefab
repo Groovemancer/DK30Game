@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -7821693038770649221}
   - component: {fileID: -187783487489698686}
   - component: {fileID: -8843121770804772025}
+  - component: {fileID: -4673715890221751417}
   m_Layer: 0
   m_Name: Lever
   m_TagString: Untagged
@@ -122,13 +123,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff994f5b2b7d28740a9afb910634b73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObjectsInRange: []
   OnActiveEvents:
     m_PersistentCalls:
       m_Calls: []
   OnDeActiveEvents:
     m_PersistentCalls:
       m_Calls: []
+  CanOnlyActivateOnce: 0
   SpriteActiveState: {fileID: -3125634477355261619, guid: 92b180080f498a647b35bd7d4b15d234,
     type: 3}
   SpriteDeActiveState: {fileID: 8504733163015029092, guid: 92b180080f498a647b35bd7d4b15d234,
     type: 3}
+  TargetPasser: {fileID: -4673715890221751417}
+--- !u!114 &-4673715890221751417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656206619479939329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 081ade9375f787b4fb6fe50b3f9a4391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetToPass: {fileID: 0}
