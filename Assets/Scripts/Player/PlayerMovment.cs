@@ -15,6 +15,10 @@ public class PlayerMovment : MonoBehaviour
 
     public Animator animator;
     private bool m_FacingRight = true;
+    
+    //shooting variables
+    public Transform firePoint;
+    public GameObject bulletPrefab;
 
     private void Awake() {
         boxCollider = GetComponent<BoxCollider2D>();
@@ -28,15 +32,22 @@ public class PlayerMovment : MonoBehaviour
         {
             if (animator.GetBool("Jumping") == true)
             {
-                animator.SetBool("Jumping", false);
+                //animator.SetBool("Jumping", false);
             }
         }
 
         if (IsGrounded() && Input.GetButtonDown("Jump"))
         {
             animator.SetBool("Jumping", true);
-            FindObjectOfType<AudioManager>().Play("Jump");
+            //Debug.Log(animator.GetBool("Jumping"));
+            //FindObjectOfType<AudioManager>().Play("Jump");
             jump = true;
+        }
+
+        //shooting logic
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Shoot();
         }
     }
 
@@ -56,7 +67,7 @@ public class PlayerMovment : MonoBehaviour
 
         animator.SetBool("Running", Mathf.Abs(horizontalMove) > 0);
         //animator.SetFloat("Horizontal", Mathf.Abs(horizontalMove));
-        //Debug.Log(Input.GetAxis("Horizontal"));
+        //Debug.Log(animator.GetBool("Running"));
         jump = false;
         
     }
@@ -65,6 +76,7 @@ public class PlayerMovment : MonoBehaviour
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, environmentLayerMask);
         if (raycastHit.collider != null)
         {
+            animator.SetBool("Jumping", false);
             return true;
         }
         else
@@ -79,9 +91,22 @@ public class PlayerMovment : MonoBehaviour
         m_FacingRight = !m_FacingRight;
 
         // Multiply the player's x local scale by -1.
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+        //Vector3 theScale = transform.localScale;
+        //theScale.x *= -1;
+        //transform.localScale = theScale;
+
+        transform.Rotate(0f, 180f, 0f);
+    }
+
+    private void Shoot()
+    {
+        //Start Shooting Animation
+        //animator.SetBool("Shooting", true);
+
+        //create a bullet at a fire point
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
+        //stop shooting
     }
 }
 
