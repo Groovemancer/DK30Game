@@ -15,6 +15,10 @@ public class PlayerMovment : MonoBehaviour
 
     public Animator animator;
     private bool m_FacingRight = true;
+    
+    //shooting variables
+    public Transform firePoint;
+    public GameObject bulletPrefab;
 
     private void Awake() {
         boxCollider = GetComponent<BoxCollider2D>();
@@ -87,9 +91,11 @@ public class PlayerMovment : MonoBehaviour
         m_FacingRight = !m_FacingRight;
 
         // Multiply the player's x local scale by -1.
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+        //Vector3 theScale = transform.localScale;
+        //theScale.x *= -1;
+        //transform.localScale = theScale;
+
+        transform.Rotate(0f, 180f, 0f);
     }
 
     private void Shoot()
@@ -98,6 +104,7 @@ public class PlayerMovment : MonoBehaviour
         //animator.SetBool("Shooting", true);
 
         //create a bullet at a fire point
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
         //stop shooting
     }
