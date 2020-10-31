@@ -35,6 +35,7 @@ public class PlayerMovment : MonoBehaviour
         if (IsGrounded() && Input.GetButtonDown("Jump"))
         {
             animator.SetBool("Jumping", true);
+            FindObjectOfType<AudioManager>().Play("Jump");
             jump = true;
         }
     }
