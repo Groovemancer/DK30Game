@@ -22,6 +22,7 @@ public class GameplayDKButton : BaseActivatable
 		{
 			LastActivated = Time.time;
 			StartCoroutine( PressButton() );
+			FindObjectOfType<AudioManager>().Play("Button");
 		}
 	}
 
