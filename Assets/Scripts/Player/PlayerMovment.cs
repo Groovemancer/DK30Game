@@ -28,15 +28,22 @@ public class PlayerMovment : MonoBehaviour
         {
             if (animator.GetBool("Jumping") == true)
             {
-                animator.SetBool("Jumping", false);
+                //animator.SetBool("Jumping", false);
             }
         }
 
         if (IsGrounded() && Input.GetButtonDown("Jump"))
         {
             animator.SetBool("Jumping", true);
-            FindObjectOfType<AudioManager>().Play("Jump");
+            //Debug.Log(animator.GetBool("Jumping"));
+            //FindObjectOfType<AudioManager>().Play("Jump");
             jump = true;
+        }
+
+        //shooting logic
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Shoot();
         }
     }
 
@@ -56,7 +63,7 @@ public class PlayerMovment : MonoBehaviour
 
         animator.SetBool("Running", Mathf.Abs(horizontalMove) > 0);
         //animator.SetFloat("Horizontal", Mathf.Abs(horizontalMove));
-        //Debug.Log(Input.GetAxis("Horizontal"));
+        //Debug.Log(animator.GetBool("Running"));
         jump = false;
         
     }
@@ -65,6 +72,7 @@ public class PlayerMovment : MonoBehaviour
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, environmentLayerMask);
         if (raycastHit.collider != null)
         {
+            animator.SetBool("Jumping", false);
             return true;
         }
         else
@@ -82,6 +90,16 @@ public class PlayerMovment : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    private void Shoot()
+    {
+        //Start Shooting Animation
+        //animator.SetBool("Shooting", true);
+
+        //create a bullet at a fire point
+
+        //stop shooting
     }
 }
 
