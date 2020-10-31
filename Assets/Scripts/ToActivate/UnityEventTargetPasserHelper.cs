@@ -11,6 +11,11 @@ public class UnityEventTargetPasserHelper : MonoBehaviour
 		TargetToPass = GameObjectIn;
 	}
 
+	public void UnSetTarget()
+	{
+		TargetToPass = null;
+	}
+
 	public GameObject GetTarget()
 	{
 		return TargetToPass;

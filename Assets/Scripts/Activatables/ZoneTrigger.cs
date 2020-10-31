@@ -8,8 +8,8 @@ public class ZoneTrigger : BaseActivatable
 	void OnTriggerEnter2D(Collider2D collision)
 	{
 		//base on trigger enter
-
 		ObjectsInRange.Add(collision.gameObject);
+		SetTargetPasser();
 
 		//end base on trigger enter
 
@@ -27,6 +27,7 @@ public class ZoneTrigger : BaseActivatable
 		if (ObjectsInRange.Contains(collision.gameObject))
 		{
 			ObjectsInRange.Remove(collision.gameObject);
+			UnSetTargetPasser();
 		}
 		//end base on trigger exit
 

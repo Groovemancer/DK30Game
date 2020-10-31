@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5305049144854717220}
   - component: {fileID: 5305049144854717219}
   - component: {fileID: 5305049144854717218}
+  - component: {fileID: -1574479521115136772}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -122,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd85c6adfd8f49499dd561653d87d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObjectsInRange: []
   OnActiveEvents:
     m_PersistentCalls:
       m_Calls: []
@@ -133,4 +135,18 @@ MonoBehaviour:
     type: 3}
   SpriteDeActiveState: {fileID: 6372968664638053925, guid: e5c9c2696f236f84fa696a8bd709b1cd,
     type: 3}
+  TargetPasser: {fileID: -1574479521115136772}
   delayToDeActivate: 1
+--- !u!114 &-1574479521115136772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5305049144854717217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 081ade9375f787b4fb6fe50b3f9a4391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetToPass: {fileID: 0}
