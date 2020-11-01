@@ -49,6 +49,7 @@ public class PlayerMovment : MonoBehaviour
         {
             Shoot();
         }
+
     }
 
     void FixedUpdate()
@@ -85,6 +86,7 @@ public class PlayerMovment : MonoBehaviour
         }
     }
 
+
     private void Flip()
     {
         // Switch the way the player is labelled as facing.
@@ -101,12 +103,13 @@ public class PlayerMovment : MonoBehaviour
     private void Shoot()
     {
         //Start Shooting Animation
-        //animator.SetBool("Shooting", true);
+        animator.SetTrigger("Shooting");
+        //Debug.Log("the player is shooting " + animator.GetBool("Shooting"));
 
         //create a bullet at a fire point
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
-        //stop shooting
+
     }
 }
 

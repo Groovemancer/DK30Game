@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -40,13 +41,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-
-
-  - name: Wall Hangings
-    uniqueID: 4069474303
-    locked: 0
-  - name: Floor Objects
-    uniqueID: 3626358253
-    
     locked: 0
