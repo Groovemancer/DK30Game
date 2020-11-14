@@ -19,6 +19,7 @@ public class PlayerMovment : MonoBehaviour
     //shooting variables
     public Transform firePoint;
     public GameObject bulletPrefab;
+    private int ammoAmount = 3; //Starting ammo amount
 
     private void Awake() {
         boxCollider = GetComponent<BoxCollider2D>();
@@ -47,7 +48,13 @@ public class PlayerMovment : MonoBehaviour
         //shooting logic
         if (Input.GetButtonDown("Fire1"))
         {
-            Shoot();
+            if(ammoAmount > 0)
+            {
+                Shoot();
+                ammoAmount--;
+            }
+            
+          
         }
     }
 
